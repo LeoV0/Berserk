@@ -8,6 +8,7 @@ import BehelitFloating from "./components/BehelitFloating";
 import GriffithBustSection from "./components/GriffithBustSection";
 
 import SectionDivider from "./components/SectionDivider";
+import KineticTeamHybrid from "./components/kinetic-team-hybrid";
 
 export default function App() {
   const [introComplete, setIntroComplete] = useState(false);
@@ -30,9 +31,11 @@ export default function App() {
         >
           <Hero introComplete={introComplete} />
         </div>
-
-
         <ScrollingImageGallery />
+
+        <SectionDivider />
+
+        <KineticTeamHybrid/>
 
         <SectionDivider />
 
@@ -43,15 +46,6 @@ export default function App() {
         <GriffithBustSection />
 
         <SectionDivider />
-
-        <section className="min-h-screen flex items-center justify-center">
-          <div className="text-center">
-            <h2 className="text-2xl md:text-3xl font-semibold tracking-[0.2em] uppercase text-gray-300">
-              Section de test
-            </h2>
-            
-          </div>
-        </section>
       </main>
     </div>
   );
