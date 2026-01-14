@@ -3,12 +3,12 @@ import RealisticFogBackground from "./components/RealisticFogBackground";
 import IntroReveal from "./components/IntroReveal";
 import Hero from "./components/Hero";
 import ScrollingImageGallery from "./components/ChapterReveal";
-
 import BehelitFloating from "./components/BehelitFloating";
 import GriffithBustSection from "./components/GriffithBustSection";
-
 import SectionDivider from "./components/SectionDivider";
 import KineticTeamHybrid from "./components/kinetic-team-hybrid";
+import SilentEclipseSection from "./components/SilentEclipseSection";
+import BerserkFooter from "./components/BerserkFooter";
 
 export default function App() {
   const [introComplete, setIntroComplete] = useState(false);
@@ -46,6 +46,13 @@ export default function App() {
         <GriffithBustSection />
 
         <SectionDivider />
+
+        <SilentEclipseSection />
+
+        <SectionDivider />
+
+
+        <BerserkFooter />
       </main>
     </div>
   );

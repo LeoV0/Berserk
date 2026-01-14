@@ -29,7 +29,7 @@ const TEAM: TeamMember[] = [
     id: '02',
     name: 'Guts',
     role: 'Capitaine des Assauts',
-    image: 'images/Guts.jpg',
+    image: 'images/Guts.png',
   },
   {
     id: '03',

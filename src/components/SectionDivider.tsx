@@ -11,4 +11,3 @@ const SectionDivider = () => {
   };
   
   export default SectionDivider;
-  
