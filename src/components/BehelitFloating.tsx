@@ -6,16 +6,15 @@ import * as THREE from "three";
 import BehelitModel from "../assets/3D/Behelit.glb";
 
 function BehelitMesh({ progress }: { progress: number }) {
-  const ref = useRef<THREE.Object3D>(null);
+  const ref = useRef<THREE.Object3D & { _p?: number }>(null);
   const { scene } = useGLTF(BehelitModel);
 
-  useFrame((state, delta) => {
+  useFrame((_, delta) => {
     if (!ref.current) return;
 
-    const anyRef = ref.current as any;
-    if (anyRef._p === undefined) anyRef._p = 0;
-    anyRef._p = THREE.MathUtils.lerp(anyRef._p, progress, 3 * delta);
-    const p = anyRef._p;
+    if (ref.current._p === undefined) ref.current._p = 0;
+    ref.current._p = THREE.MathUtils.lerp(ref.current._p, progress, 3 * delta);
+    const p = ref.current._p;
 
     const baseX = 0;
     const baseY = 1;
