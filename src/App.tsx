@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import RealisticFogBackground from "./components/RealisticFogBackground";
 import IntroReveal from "./components/IntroReveal";
 import Hero from "./components/Hero";
@@ -9,11 +9,26 @@ import SectionDivider from "./components/SectionDivider";
 import KineticTeamHybrid from "./components/kinetic-team-hybrid";
 import SilentEclipseSection from "./components/SilentEclipseSection";
 import BerserkFooter from "./components/BerserkFooter";
+import LenisProvider from "./components/LenisProvider";
+import { useLenis } from "lenis/react";
 
 export default function App() {
   const [introComplete, setIntroComplete] = useState(false);
+  const lenis = useLenis();
+
+  useEffect(() => {
+    if (!introComplete && lenis) {
+      lenis.stop();
+      document.body.style.overflow = 'hidden';
+    } else if (introComplete && lenis) {
+      lenis.start();
+      document.body.style.overflow = '';
+    }
+  }, [introComplete, lenis]);
+
 
   return (
+    <LenisProvider>
     <div className="relative min-h-screen text-white">
       <RealisticFogBackground />
 
@@ -30,30 +45,20 @@ export default function App() {
           }`}
         >
           <Hero introComplete={introComplete} />
+          <ScrollingImageGallery />
+          <SectionDivider />
+          <KineticTeamHybrid />
+          <SectionDivider />
+          <BehelitFloating />
+          <SectionDivider />
+          <GriffithBustSection />
+          <SectionDivider />
+          <SilentEclipseSection />
+          <SectionDivider />
+          <BerserkFooter />
         </div>
-        <ScrollingImageGallery />
-
-        <SectionDivider />
-
-        <KineticTeamHybrid/>
-
-        <SectionDivider />
-
-        <BehelitFloating />
-
-        <SectionDivider />
-
-        <GriffithBustSection />
-
-        <SectionDivider />
-
-        <SilentEclipseSection />
-
-        <SectionDivider />
-
-
-        <BerserkFooter />
       </main>
     </div>
+  </LenisProvider>
   );
 }
